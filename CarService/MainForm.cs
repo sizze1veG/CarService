@@ -19,12 +19,51 @@ namespace CarService
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            CheckRole();
+        }
 
+        private void CheckRole()
+        {
+            int roleID = PersonalData.RoleID;
+            switch (roleID)
+            {
+                case 2:
+                    panelServices.Dispose();
+                    panelReporst.Dispose();
+                    panelEmployees.Dispose();
+                    panelAboutAProgramm.Dispose();
+                    break;
+                case 3:
+                    panelServices.Dispose();
+                    panelClients.Dispose();
+                    panelCars.Dispose();
+                    panelReporst.Dispose();
+                    panelEmployees.Dispose();
+                    panelAboutAProgramm.Dispose();
+                    break;
+                case 4:
+                    panelServices.Dispose();
+                    panelCars.Dispose();
+                    panelEmployees.Dispose();
+                    panelAboutAProgramm.Dispose();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Хотите сменить аккаунт?","Выход", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                new LogInForm().Show();
+                Hide();
+            }
+            else if (result == DialogResult.No)
+            {
+                Application.Exit();
+            }
         }
 
         private bool sidebarExpand = true;

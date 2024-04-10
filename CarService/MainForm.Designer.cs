@@ -35,37 +35,37 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxSideBar = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanelSideBar = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelOrders = new System.Windows.Forms.Panel();
             this.buttonOrders = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelServices = new System.Windows.Forms.Panel();
             this.buttonServices = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelClients = new System.Windows.Forms.Panel();
             this.buttonClients = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelCars = new System.Windows.Forms.Panel();
             this.buttonCars = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.panelReporst = new System.Windows.Forms.Panel();
             this.buttonReports = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.panelEmployees = new System.Windows.Forms.Panel();
             this.buttonEmployees = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.panelAccount = new System.Windows.Forms.Panel();
             this.buttonAccount = new System.Windows.Forms.Button();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.panelAboutAProgramm = new System.Windows.Forms.Panel();
             this.buttonAboutAProgramm = new System.Windows.Forms.Button();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.panelExit = new System.Windows.Forms.Panel();
             this.buttonExit = new System.Windows.Forms.Button();
             this.timerSideBar = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSideBar)).BeginInit();
             this.flowLayoutPanelSideBar.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
+            this.panelOrders.SuspendLayout();
+            this.panelServices.SuspendLayout();
+            this.panelClients.SuspendLayout();
+            this.panelCars.SuspendLayout();
+            this.panelReporst.SuspendLayout();
+            this.panelEmployees.SuspendLayout();
+            this.panelAccount.SuspendLayout();
+            this.panelAboutAProgramm.SuspendLayout();
+            this.panelExit.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -128,21 +128,29 @@
             // flowLayoutPanelSideBar
             // 
             this.flowLayoutPanelSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.flowLayoutPanelSideBar.Controls.Add(this.panel1);
-            this.flowLayoutPanelSideBar.Controls.Add(this.panel2);
-            this.flowLayoutPanelSideBar.Controls.Add(this.panel3);
-            this.flowLayoutPanelSideBar.Controls.Add(this.panel4);
-            this.flowLayoutPanelSideBar.Controls.Add(this.panel5);
-            this.flowLayoutPanelSideBar.Controls.Add(this.panel6);
-            this.flowLayoutPanelSideBar.Controls.Add(this.panel7);
-            this.flowLayoutPanelSideBar.Controls.Add(this.panel8);
-            this.flowLayoutPanelSideBar.Controls.Add(this.panel9);
+            this.flowLayoutPanelSideBar.Controls.Add(this.panelOrders);
+            this.flowLayoutPanelSideBar.Controls.Add(this.panelServices);
+            this.flowLayoutPanelSideBar.Controls.Add(this.panelClients);
+            this.flowLayoutPanelSideBar.Controls.Add(this.panelCars);
+            this.flowLayoutPanelSideBar.Controls.Add(this.panelReporst);
+            this.flowLayoutPanelSideBar.Controls.Add(this.panelEmployees);
+            this.flowLayoutPanelSideBar.Controls.Add(this.panelAccount);
+            this.flowLayoutPanelSideBar.Controls.Add(this.panelAboutAProgramm);
+            this.flowLayoutPanelSideBar.Controls.Add(this.panelExit);
             this.flowLayoutPanelSideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanelSideBar.Location = new System.Drawing.Point(0, 46);
             this.flowLayoutPanelSideBar.Name = "flowLayoutPanelSideBar";
             this.flowLayoutPanelSideBar.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.flowLayoutPanelSideBar.Size = new System.Drawing.Size(264, 621);
             this.flowLayoutPanelSideBar.TabIndex = 1;
+            // 
+            // panelOrders
+            // 
+            this.panelOrders.Controls.Add(this.buttonOrders);
+            this.panelOrders.Location = new System.Drawing.Point(3, 23);
+            this.panelOrders.Name = "panelOrders";
+            this.panelOrders.Size = new System.Drawing.Size(256, 61);
+            this.panelOrders.TabIndex = 4;
             // 
             // buttonOrders
             // 
@@ -159,21 +167,13 @@
             this.buttonOrders.Text = "        Заказы";
             this.buttonOrders.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // panelServices
             // 
-            this.panel1.Controls.Add(this.buttonOrders);
-            this.panel1.Location = new System.Drawing.Point(3, 23);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(256, 61);
-            this.panel1.TabIndex = 4;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.buttonServices);
-            this.panel2.Location = new System.Drawing.Point(3, 90);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(256, 61);
-            this.panel2.TabIndex = 4;
+            this.panelServices.Controls.Add(this.buttonServices);
+            this.panelServices.Location = new System.Drawing.Point(3, 90);
+            this.panelServices.Name = "panelServices";
+            this.panelServices.Size = new System.Drawing.Size(256, 61);
+            this.panelServices.TabIndex = 4;
             // 
             // buttonServices
             // 
@@ -190,13 +190,13 @@
             this.buttonServices.Text = "        Услуги";
             this.buttonServices.UseVisualStyleBackColor = false;
             // 
-            // panel3
+            // panelClients
             // 
-            this.panel3.Controls.Add(this.buttonClients);
-            this.panel3.Location = new System.Drawing.Point(3, 157);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(256, 61);
-            this.panel3.TabIndex = 4;
+            this.panelClients.Controls.Add(this.buttonClients);
+            this.panelClients.Location = new System.Drawing.Point(3, 157);
+            this.panelClients.Name = "panelClients";
+            this.panelClients.Size = new System.Drawing.Size(256, 61);
+            this.panelClients.TabIndex = 4;
             // 
             // buttonClients
             // 
@@ -213,13 +213,13 @@
             this.buttonClients.Text = "        Клиенты";
             this.buttonClients.UseVisualStyleBackColor = false;
             // 
-            // panel4
+            // panelCars
             // 
-            this.panel4.Controls.Add(this.buttonCars);
-            this.panel4.Location = new System.Drawing.Point(3, 224);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(256, 61);
-            this.panel4.TabIndex = 4;
+            this.panelCars.Controls.Add(this.buttonCars);
+            this.panelCars.Location = new System.Drawing.Point(3, 224);
+            this.panelCars.Name = "panelCars";
+            this.panelCars.Size = new System.Drawing.Size(256, 61);
+            this.panelCars.TabIndex = 4;
             // 
             // buttonCars
             // 
@@ -236,13 +236,13 @@
             this.buttonCars.Text = "        Автомобили";
             this.buttonCars.UseVisualStyleBackColor = false;
             // 
-            // panel5
+            // panelReporst
             // 
-            this.panel5.Controls.Add(this.buttonReports);
-            this.panel5.Location = new System.Drawing.Point(3, 291);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(256, 61);
-            this.panel5.TabIndex = 4;
+            this.panelReporst.Controls.Add(this.buttonReports);
+            this.panelReporst.Location = new System.Drawing.Point(3, 291);
+            this.panelReporst.Name = "panelReporst";
+            this.panelReporst.Size = new System.Drawing.Size(256, 61);
+            this.panelReporst.TabIndex = 4;
             // 
             // buttonReports
             // 
@@ -259,13 +259,13 @@
             this.buttonReports.Text = "        Отчёты";
             this.buttonReports.UseVisualStyleBackColor = false;
             // 
-            // panel6
+            // panelEmployees
             // 
-            this.panel6.Controls.Add(this.buttonEmployees);
-            this.panel6.Location = new System.Drawing.Point(3, 358);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(256, 61);
-            this.panel6.TabIndex = 4;
+            this.panelEmployees.Controls.Add(this.buttonEmployees);
+            this.panelEmployees.Location = new System.Drawing.Point(3, 358);
+            this.panelEmployees.Name = "panelEmployees";
+            this.panelEmployees.Size = new System.Drawing.Size(256, 61);
+            this.panelEmployees.TabIndex = 4;
             // 
             // buttonEmployees
             // 
@@ -282,13 +282,13 @@
             this.buttonEmployees.Text = "        Сотрудники";
             this.buttonEmployees.UseVisualStyleBackColor = false;
             // 
-            // panel7
+            // panelAccount
             // 
-            this.panel7.Controls.Add(this.buttonAccount);
-            this.panel7.Location = new System.Drawing.Point(3, 425);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(256, 61);
-            this.panel7.TabIndex = 4;
+            this.panelAccount.Controls.Add(this.buttonAccount);
+            this.panelAccount.Location = new System.Drawing.Point(3, 425);
+            this.panelAccount.Name = "panelAccount";
+            this.panelAccount.Size = new System.Drawing.Size(256, 61);
+            this.panelAccount.TabIndex = 4;
             // 
             // buttonAccount
             // 
@@ -305,13 +305,13 @@
             this.buttonAccount.Text = "        Аккаунт";
             this.buttonAccount.UseVisualStyleBackColor = false;
             // 
-            // panel8
+            // panelAboutAProgramm
             // 
-            this.panel8.Controls.Add(this.buttonAboutAProgramm);
-            this.panel8.Location = new System.Drawing.Point(3, 492);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(256, 61);
-            this.panel8.TabIndex = 4;
+            this.panelAboutAProgramm.Controls.Add(this.buttonAboutAProgramm);
+            this.panelAboutAProgramm.Location = new System.Drawing.Point(3, 492);
+            this.panelAboutAProgramm.Name = "panelAboutAProgramm";
+            this.panelAboutAProgramm.Size = new System.Drawing.Size(256, 61);
+            this.panelAboutAProgramm.TabIndex = 4;
             // 
             // buttonAboutAProgramm
             // 
@@ -328,13 +328,13 @@
             this.buttonAboutAProgramm.Text = "        О программе";
             this.buttonAboutAProgramm.UseVisualStyleBackColor = false;
             // 
-            // panel9
+            // panelExit
             // 
-            this.panel9.Controls.Add(this.buttonExit);
-            this.panel9.Location = new System.Drawing.Point(3, 559);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(256, 61);
-            this.panel9.TabIndex = 4;
+            this.panelExit.Controls.Add(this.buttonExit);
+            this.panelExit.Location = new System.Drawing.Point(3, 559);
+            this.panelExit.Name = "panelExit";
+            this.panelExit.Size = new System.Drawing.Size(256, 61);
+            this.panelExit.TabIndex = 4;
             // 
             // buttonExit
             // 
@@ -354,7 +354,7 @@
             // 
             // timerSideBar
             // 
-            this.timerSideBar.Interval = 40;
+            this.timerSideBar.Interval = 30;
             this.timerSideBar.Tick += new System.EventHandler(this.timerSideBar_Tick);
             // 
             // MainForm
@@ -365,6 +365,7 @@
             this.Controls.Add(this.flowLayoutPanelSideBar);
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
@@ -373,15 +374,15 @@
             this.panelMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSideBar)).EndInit();
             this.flowLayoutPanelSideBar.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
+            this.panelOrders.ResumeLayout(false);
+            this.panelServices.ResumeLayout(false);
+            this.panelClients.ResumeLayout(false);
+            this.panelCars.ResumeLayout(false);
+            this.panelReporst.ResumeLayout(false);
+            this.panelEmployees.ResumeLayout(false);
+            this.panelAccount.ResumeLayout(false);
+            this.panelAboutAProgramm.ResumeLayout(false);
+            this.panelExit.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -394,22 +395,22 @@
         private ReaLTaiizor.Controls.NightControlBox nightControlBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSideBar;
         private System.Windows.Forms.Button buttonOrders;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelOrders;
+        private System.Windows.Forms.Panel panelServices;
         private System.Windows.Forms.Button buttonServices;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelClients;
         private System.Windows.Forms.Button buttonClients;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelCars;
         private System.Windows.Forms.Button buttonCars;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panelReporst;
         private System.Windows.Forms.Button buttonReports;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panelEmployees;
         private System.Windows.Forms.Button buttonEmployees;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panelAccount;
         private System.Windows.Forms.Button buttonAccount;
-        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panelAboutAProgramm;
         private System.Windows.Forms.Button buttonAboutAProgramm;
-        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panelExit;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Timer timerSideBar;
     }

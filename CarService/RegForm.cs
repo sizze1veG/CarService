@@ -25,13 +25,15 @@ namespace CarService
         public RegForm()
         {
             InitializeComponent();
-            server = "localhost";
-            database = "carservice";
-            uid = "locAdmin";
-            password = "locAdmin";
+            //server = "localhost";
+            //database = "carservice";
+            //uid = "locAdmin";
+            //password = "locAdmin";
 
-            string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};charset=utf8mb4";
-            connection = new MySqlConnection(connectionString);  
+            //string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};charset=utf8mb4";
+            //connection = new MySqlConnection(connectionString);  
+
+            connection = new DBConnection().GetConnectionString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
