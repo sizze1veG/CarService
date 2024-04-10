@@ -23,13 +23,15 @@ namespace CarService
         public LogInForm()
         {
             InitializeComponent();
-            server = "localhost";
-            database = "carservice";
-            uid = "locAdmin";
-            password = "locAdmin";
+            //server = "localhost";
+            //database = "carservice";
+            //uid = "locAdmin";
+            //password = "locAdmin";
 
-            string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};charset=utf8mb4";
-            connection = new MySqlConnection(connectionString);
+            //string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};charset=utf8mb4";
+            //connection = new MySqlConnection(connectionString);
+
+            connection = new DBConnection().GetConnectionString();
         }
 
         private void buttonLog_Click(object sender, EventArgs e)
@@ -57,9 +59,13 @@ namespace CarService
                     string hashedPasswordFromDatabase = result.ToString();
                     if (VerifyHashedPassword(hashedPasswordFromDatabase, authPassword))
                     {
-                        MessageBox.Show("Пользователь авторизирован.", "Авторизация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Hide();
-                        new MainForm().ShowDialog();  
+                        var account = new PersonalData();
+                        if (account.SetUserData(authUserName, hashedPasswordFromDatabase))
+                        {
+                            MessageBox.Show("Пользователь авторизирован.", "Авторизация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Hide();
+                            new MainForm().ShowDialog();
+                        }                        
                     }
                     else
                     {
