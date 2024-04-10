@@ -33,7 +33,7 @@
             this.labelNoAccount = new System.Windows.Forms.Label();
             this.buttonLog = new System.Windows.Forms.Button();
             this.checkBoxShowPassword = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             // 
             this.labelClose.AutoSize = true;
             this.labelClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
-            this.labelClose.Location = new System.Drawing.Point(115, 417);
+            this.labelClose.Location = new System.Drawing.Point(116, 417);
             this.labelClose.Name = "labelClose";
             this.labelClose.Size = new System.Drawing.Size(90, 23);
             this.labelClose.TabIndex = 24;
@@ -83,6 +83,7 @@
             this.buttonLog.TabIndex = 21;
             this.buttonLog.Text = "Войти";
             this.buttonLog.UseVisualStyleBackColor = false;
+            this.buttonLog.Click += new System.EventHandler(this.buttonLog_Click);
             // 
             // checkBoxShowPassword
             // 
@@ -95,17 +96,20 @@
             this.checkBoxShowPassword.TabIndex = 20;
             this.checkBoxShowPassword.Text = "Показать пароль";
             this.checkBoxShowPassword.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassword.CheckedChanged += new System.EventHandler(this.checkBoxShowPassword_CheckedChanged);
             // 
-            // textBox1
+            // textBoxPassword
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(35, 194);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(216, 28);
-            this.textBox1.TabIndex = 18;
+            this.textBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
+            this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPassword.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(35, 194);
+            this.textBoxPassword.Multiline = true;
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '•';
+            this.textBoxPassword.Size = new System.Drawing.Size(216, 28);
+            this.textBoxPassword.TabIndex = 18;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
             // 
             // textBoxLogin
             // 
@@ -117,6 +121,7 @@
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(216, 28);
             this.textBoxLogin.TabIndex = 16;
+            this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLogin_KeyPress);
             // 
             // labelPassword
             // 
@@ -158,7 +163,7 @@
             this.Controls.Add(this.labelNoAccount);
             this.Controls.Add(this.buttonLog);
             this.Controls.Add(this.checkBoxShowPassword);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelUserName);
@@ -182,7 +187,7 @@
         private System.Windows.Forms.Label labelNoAccount;
         private System.Windows.Forms.Button buttonLog;
         private System.Windows.Forms.CheckBox checkBoxShowPassword;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelUserName;

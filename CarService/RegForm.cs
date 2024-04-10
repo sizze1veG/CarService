@@ -44,31 +44,69 @@ namespace CarService
             try
             {
                 connection.Open();
-
-                string userLogin = textBoxLogin.Text;
-
-                string checkQuery = "SELECT COUNT(*) FROM users WHERE Username = @UserName";
-                MySqlCommand checkCmd = new MySqlCommand(checkQuery, connection);
-                checkCmd.Parameters.AddWithValue("@UserName", userLogin);
-                int userCount = Convert.ToInt32(checkCmd.ExecuteScalar());
-
-                if (userCount > 0)
+                if (!CheckFirstName())
                 {
-                    MessageBox.Show("Пользователь с таким именем уже существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Неверно введено имя.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     connection.Close();
+                    textBoxFrstName.Focus();
                     return;
                 }
+                else if (!CheckLastName())
+                {
+                    MessageBox.Show("Неверно введена фамилия.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    connection.Close();
+                    textBoxLastName.Focus();
+                    return;
+                }
+                else if (!CheckPosition()) 
+                {
+                    MessageBox.Show("Не выбрана должность.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    connection.Close();
+                    comboBoxPosition.Focus();
+                    return;
+                }
+                else if (textBoxLogin.Text.Length < 5)
+                {
+                    MessageBox.Show("Логин слишком короткий. Минимальная длина логина 5 символов",
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    connection.Close();
+                    textBoxLogin.Focus();
+                    return;
+                }
+                else if (!CheckLogin())
+                {
+                    MessageBox.Show("Пользователь с таким логином уже существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxLogin.Focus();
+                    return;
+                }
+                else if (!CheckPassword())
+                {
+                    MessageBox.Show("Пароли не совпадают или пароль слишком короткий. Минимальная длина пароля 5 символов",
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    connection.Close();
+                    textBoxPassword.Focus();
+                    return;
+                }
+                else
+                {
+                    string query = "INSERT INTO employees (FirstName, LastName, Position, Username, Password, RoleID)" +
+                        " VALUES (@FirstName, @LastName, @Position, @Username, @Password, @RoleID)";
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@FirstName", textBoxFrstName.Text);
+                    cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
+                    cmd.Parameters.AddWithValue("@Position", comboBoxPosition.Text);
+                    cmd.Parameters.AddWithValue("@Username", textBoxLogin.Text);
+                    cmd.Parameters.AddWithValue("@Password", HashPassword(textBoxPassword.Text));
+                    cmd.Parameters.AddWithValue("@RoleID", comboBoxPosition.SelectedIndex + 2);
+                    cmd.ExecuteNonQuery();
 
-                string query = "INSERT INTO employees (FirstName, LastName, Position, Username, Password) VALUES (@FirstName, @LastName, @Position, @Username, @Password)";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@FirstName", textBoxFrstName.Text);
-                cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
-                cmd.Parameters.AddWithValue("@Position", comboBoxPosition.Text);
-                cmd.Parameters.AddWithValue("@Username", textBoxLogin.Text);
-                cmd.Parameters.AddWithValue("@Password", HashPassword(textBoxPassword.Text));
-                cmd.ExecuteNonQuery();
+                    connection.Close();
 
-                connection.Close();
+                    MessageBox.Show("Аккаунт успешно зарегистрирован.", "Регистрация",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ClearAllFields();
+                }    
             }
             catch (Exception ex)
             {
@@ -108,43 +146,97 @@ namespace CarService
             return Convert.ToBase64String(dst);
         }
 
-        public static bool VerifyHashedPassword(string hashedPassword, string password)
+        #region check input data
+
+        private void textBoxFrstName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            byte[] buffer4;
-            if (hashedPassword == null)
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != 8)
             {
-                return false;
+                e.Handled = true;
             }
-            if (password == null)
-            {
-                throw new ArgumentNullException("password");
-            }
-            byte[] src = Convert.FromBase64String(hashedPassword);
-            if ((src.Length != 0x31) || (src[0] != 0))
-            {
-                return false;
-            }
-            byte[] dst = new byte[0x10];
-            Buffer.BlockCopy(src, 1, dst, 0, 0x10);
-            byte[] buffer3 = new byte[0x20];
-            Buffer.BlockCopy(src, 0x11, buffer3, 0, 0x20);
-            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(password, dst, 0x3e8))
-            {
-                buffer4 = bytes.GetBytes(0x20);
-            }
-            return ByteArraysEqual(buffer3, buffer4);
         }
 
-        public static bool ByteArraysEqual(byte[] b1, byte[] b2)
+        private void textBoxLastName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (b1 == b2) return true;
-            if (b1 == null || b2 == null) return false;
-            if (b1.Length != b2.Length) return false;
-            for (int i = 0; i < b1.Length; i++)
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != 8)
             {
-                if (b1[i] != b2[i]) return false;
+                e.Handled = true;
+            }
+        }
+
+        private bool CheckFirstName() => textBoxFrstName.Text.Length > 2;
+
+        private bool CheckLastName() => textBoxLastName.Text.Length > 2;
+
+        private bool CheckPosition() => comboBoxPosition.SelectedIndex != -1;
+
+        private bool CheckLogin()
+        {
+            string userLogin = textBoxLogin.Text;
+
+            string checkQuery = "SELECT COUNT(*) FROM employees WHERE Username = @UserName";
+            MySqlCommand checkCmd = new MySqlCommand(checkQuery, connection);
+            checkCmd.Parameters.AddWithValue("@UserName", userLogin);
+            int userCount = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+            if (userCount > 0)
+            {
+                connection.Close();
+                return false;
             }
             return true;
+        }
+
+        private void textBoxLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 33 || e.KeyChar > 126) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private bool CheckPassword() => textBoxPassword.Text.Length >= 5 && textBoxPassword.Text == textBoxConfirmPassword.Text;
+
+        private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 33 || e.KeyChar > 126) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxConfirmPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 33 || e.KeyChar > 126) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowPassword.Checked)
+            {
+                textBoxPassword.PasswordChar = '\0';
+                textBoxConfirmPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                textBoxPassword.PasswordChar = '•';
+                textBoxConfirmPassword.PasswordChar = '•';
+            }
+        }
+
+        #endregion
+
+        private void ClearAllFields()
+        {
+            textBoxFrstName.Clear();
+            textBoxLastName.Clear();
+            comboBoxPosition.SelectedIndex = -1;
+            textBoxLogin.Clear();
+            textBoxPassword.Clear();
+            textBoxConfirmPassword.Clear();
         }
     }
 }

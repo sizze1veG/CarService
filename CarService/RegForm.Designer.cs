@@ -74,10 +74,12 @@
             this.textBoxFrstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxFrstName.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxFrstName.Location = new System.Drawing.Point(35, 125);
+            this.textBoxFrstName.MaxLength = 50;
             this.textBoxFrstName.Multiline = true;
             this.textBoxFrstName.Name = "textBoxFrstName";
             this.textBoxFrstName.Size = new System.Drawing.Size(216, 28);
-            this.textBoxFrstName.TabIndex = 2;
+            this.textBoxFrstName.TabIndex = 0;
+            this.textBoxFrstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFrstName_KeyPress);
             // 
             // labelLastName
             // 
@@ -94,10 +96,12 @@
             this.textBoxLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxLastName.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLastName.Location = new System.Drawing.Point(35, 197);
+            this.textBoxLastName.MaxLength = 50;
             this.textBoxLastName.Multiline = true;
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(216, 28);
-            this.textBoxLastName.TabIndex = 2;
+            this.textBoxLastName.TabIndex = 1;
+            this.textBoxLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLastName_KeyPress);
             // 
             // labelPosition
             // 
@@ -122,7 +126,7 @@
             this.comboBoxPosition.Location = new System.Drawing.Point(35, 268);
             this.comboBoxPosition.Name = "comboBoxPosition";
             this.comboBoxPosition.Size = new System.Drawing.Size(216, 31);
-            this.comboBoxPosition.TabIndex = 3;
+            this.comboBoxPosition.TabIndex = 2;
             // 
             // labelUserName
             // 
@@ -139,10 +143,12 @@
             this.textBoxLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxLogin.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLogin.Location = new System.Drawing.Point(35, 341);
+            this.textBoxLogin.MaxLength = 50;
             this.textBoxLogin.Multiline = true;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(216, 28);
-            this.textBoxLogin.TabIndex = 2;
+            this.textBoxLogin.TabIndex = 3;
+            this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLogin_KeyPress);
             // 
             // labelPassword
             // 
@@ -159,10 +165,13 @@
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPassword.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPassword.Location = new System.Drawing.Point(35, 414);
+            this.textBoxPassword.MaxLength = 255;
             this.textBoxPassword.Multiline = true;
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '•';
             this.textBoxPassword.Size = new System.Drawing.Size(216, 28);
-            this.textBoxPassword.TabIndex = 2;
+            this.textBoxPassword.TabIndex = 4;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
             // 
             // labelConfirmPassword
             // 
@@ -179,10 +188,13 @@
             this.textBoxConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxConfirmPassword.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxConfirmPassword.Location = new System.Drawing.Point(35, 485);
+            this.textBoxConfirmPassword.MaxLength = 255;
             this.textBoxConfirmPassword.Multiline = true;
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
+            this.textBoxConfirmPassword.PasswordChar = '•';
             this.textBoxConfirmPassword.Size = new System.Drawing.Size(216, 28);
-            this.textBoxConfirmPassword.TabIndex = 2;
+            this.textBoxConfirmPassword.TabIndex = 5;
+            this.textBoxConfirmPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxConfirmPassword_KeyPress);
             // 
             // checkBoxShowPassword
             // 
@@ -192,9 +204,10 @@
             this.checkBoxShowPassword.Location = new System.Drawing.Point(35, 519);
             this.checkBoxShowPassword.Name = "checkBoxShowPassword";
             this.checkBoxShowPassword.Size = new System.Drawing.Size(188, 27);
-            this.checkBoxShowPassword.TabIndex = 4;
+            this.checkBoxShowPassword.TabIndex = 6;
             this.checkBoxShowPassword.Text = "Показать пароль";
             this.checkBoxShowPassword.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassword.CheckedChanged += new System.EventHandler(this.checkBoxShowPassword_CheckedChanged);
             // 
             // buttonReg
             // 
@@ -205,7 +218,7 @@
             this.buttonReg.Location = new System.Drawing.Point(35, 573);
             this.buttonReg.Name = "buttonReg";
             this.buttonReg.Size = new System.Drawing.Size(216, 35);
-            this.buttonReg.TabIndex = 5;
+            this.buttonReg.TabIndex = 7;
             this.buttonReg.Text = "Зарегистрировать";
             this.buttonReg.UseVisualStyleBackColor = false;
             this.buttonReg.Click += new System.EventHandler(this.buttonReg_Click);
