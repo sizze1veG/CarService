@@ -58,6 +58,8 @@ namespace CarService
                     if (VerifyHashedPassword(hashedPasswordFromDatabase, authPassword))
                     {
                         MessageBox.Show("Пользователь авторизирован.", "Авторизация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Hide();
+                        new MainForm().ShowDialog();  
                     }
                     else
                     {
