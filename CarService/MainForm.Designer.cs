@@ -285,6 +285,7 @@
             this.buttonEmployees.TabIndex = 3;
             this.buttonEmployees.Text = "        Сотрудники";
             this.buttonEmployees.UseVisualStyleBackColor = false;
+            this.buttonEmployees.Click += new System.EventHandler(this.buttonEmployees_Click);
             // 
             // panelAccount
             // 
