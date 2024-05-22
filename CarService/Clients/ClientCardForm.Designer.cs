@@ -47,7 +47,7 @@
             // pictureBoxClient
             // 
             this.pictureBoxClient.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxClient.Image")));
-            this.pictureBoxClient.Location = new System.Drawing.Point(154, 47);
+            this.pictureBoxClient.Location = new System.Drawing.Point(155, 48);
             this.pictureBoxClient.Name = "pictureBoxClient";
             this.pictureBoxClient.Size = new System.Drawing.Size(256, 256);
             this.pictureBoxClient.TabIndex = 0;
@@ -58,16 +58,16 @@
             this.textBoxFirstName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.textBoxFirstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxFirstName.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFirstName.Location = new System.Drawing.Point(607, 122);
+            this.textBoxFirstName.Location = new System.Drawing.Point(608, 123);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(363, 36);
-            this.textBoxFirstName.TabIndex = 18;
+            this.textBoxFirstName.TabIndex = 0;
             // 
             // labelFirstName
             // 
             this.labelFirstName.AutoSize = true;
             this.labelFirstName.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFirstName.Location = new System.Drawing.Point(602, 79);
+            this.labelFirstName.Location = new System.Drawing.Point(603, 80);
             this.labelFirstName.Name = "labelFirstName";
             this.labelFirstName.Size = new System.Drawing.Size(66, 30);
             this.labelFirstName.TabIndex = 17;
@@ -77,7 +77,7 @@
             // 
             this.labelLastName.AutoSize = true;
             this.labelLastName.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLastName.Location = new System.Drawing.Point(602, 168);
+            this.labelLastName.Location = new System.Drawing.Point(603, 169);
             this.labelLastName.Name = "labelLastName";
             this.labelLastName.Size = new System.Drawing.Size(129, 30);
             this.labelLastName.TabIndex = 17;
@@ -88,16 +88,16 @@
             this.textBoxLastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.textBoxLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxLastName.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxLastName.Location = new System.Drawing.Point(607, 211);
+            this.textBoxLastName.Location = new System.Drawing.Point(608, 212);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(363, 36);
-            this.textBoxLastName.TabIndex = 18;
+            this.textBoxLastName.TabIndex = 1;
             // 
             // labelPhone
             // 
             this.labelPhone.AutoSize = true;
             this.labelPhone.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPhone.Location = new System.Drawing.Point(602, 257);
+            this.labelPhone.Location = new System.Drawing.Point(603, 258);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(126, 30);
             this.labelPhone.TabIndex = 17;
@@ -106,7 +106,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.TabIndex = 19;
@@ -120,7 +120,7 @@
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonAdd.Location = new System.Drawing.Point(154, 462);
+            this.buttonAdd.Location = new System.Drawing.Point(155, 463);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(225, 52);
             this.buttonAdd.TabIndex = 23;
@@ -135,7 +135,7 @@
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpdate.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUpdate.ForeColor = System.Drawing.Color.White;
-            this.buttonUpdate.Location = new System.Drawing.Point(154, 462);
+            this.buttonUpdate.Location = new System.Drawing.Point(155, 463);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(225, 52);
             this.buttonUpdate.TabIndex = 24;
@@ -150,7 +150,7 @@
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelete.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(452, 462);
+            this.buttonDelete.Location = new System.Drawing.Point(453, 463);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(225, 52);
             this.buttonDelete.TabIndex = 25;
@@ -163,11 +163,11 @@
             this.textBoxPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.textBoxPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPhone.Font = new System.Drawing.Font("Nirmala UI", 20.25F);
-            this.textBoxPhone.Location = new System.Drawing.Point(607, 311);
+            this.textBoxPhone.Location = new System.Drawing.Point(608, 312);
             this.textBoxPhone.Mask = "+7 (999) 000-00-00";
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(363, 36);
-            this.textBoxPhone.TabIndex = 26;
+            this.textBoxPhone.TabIndex = 2;
             // 
             // ClientCardForm
             // 
