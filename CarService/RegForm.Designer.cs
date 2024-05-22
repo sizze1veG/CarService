@@ -56,7 +56,7 @@
             this.labelReg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
             this.labelReg.Location = new System.Drawing.Point(28, 37);
             this.labelReg.Name = "labelReg";
-            this.labelReg.Size = new System.Drawing.Size(217, 41);
+            this.labelReg.Size = new System.Drawing.Size(178, 32);
             this.labelReg.TabIndex = 0;
             this.labelReg.Text = "Регистрация";
             // 
@@ -65,7 +65,7 @@
             this.labelFrstName.AutoSize = true;
             this.labelFrstName.Location = new System.Drawing.Point(31, 99);
             this.labelFrstName.Name = "labelFrstName";
-            this.labelFrstName.Size = new System.Drawing.Size(46, 23);
+            this.labelFrstName.Size = new System.Drawing.Size(39, 19);
             this.labelFrstName.TabIndex = 1;
             this.labelFrstName.Text = "Имя";
             // 
@@ -87,7 +87,7 @@
             this.labelLastName.AutoSize = true;
             this.labelLastName.Location = new System.Drawing.Point(31, 171);
             this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(95, 23);
+            this.labelLastName.Size = new System.Drawing.Size(78, 19);
             this.labelLastName.TabIndex = 1;
             this.labelLastName.Text = "Фамилия";
             // 
@@ -109,7 +109,7 @@
             this.labelPosition.AutoSize = true;
             this.labelPosition.Location = new System.Drawing.Point(31, 242);
             this.labelPosition.Name = "labelPosition";
-            this.labelPosition.Size = new System.Drawing.Size(113, 23);
+            this.labelPosition.Size = new System.Drawing.Size(91, 19);
             this.labelPosition.TabIndex = 1;
             this.labelPosition.Text = "Должность";
             // 
@@ -126,7 +126,7 @@
             "Бухгалтер"});
             this.comboBoxPosition.Location = new System.Drawing.Point(35, 268);
             this.comboBoxPosition.Name = "comboBoxPosition";
-            this.comboBoxPosition.Size = new System.Drawing.Size(216, 31);
+            this.comboBoxPosition.Size = new System.Drawing.Size(216, 27);
             this.comboBoxPosition.TabIndex = 2;
             // 
             // labelUserName
@@ -134,7 +134,7 @@
             this.labelUserName.AutoSize = true;
             this.labelUserName.Location = new System.Drawing.Point(31, 315);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(65, 23);
+            this.labelUserName.Size = new System.Drawing.Size(53, 19);
             this.labelUserName.TabIndex = 1;
             this.labelUserName.Text = "Логин";
             // 
@@ -156,7 +156,7 @@
             this.labelPassword.AutoSize = true;
             this.labelPassword.Location = new System.Drawing.Point(31, 388);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(79, 23);
+            this.labelPassword.Size = new System.Drawing.Size(64, 19);
             this.labelPassword.TabIndex = 1;
             this.labelPassword.Text = "Пароль";
             // 
@@ -179,7 +179,7 @@
             this.labelConfirmPassword.AutoSize = true;
             this.labelConfirmPassword.Location = new System.Drawing.Point(31, 459);
             this.labelConfirmPassword.Name = "labelConfirmPassword";
-            this.labelConfirmPassword.Size = new System.Drawing.Size(183, 23);
+            this.labelConfirmPassword.Size = new System.Drawing.Size(145, 19);
             this.labelConfirmPassword.TabIndex = 1;
             this.labelConfirmPassword.Text = "Повторить пароль";
             // 
@@ -204,7 +204,7 @@
             this.checkBoxShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxShowPassword.Location = new System.Drawing.Point(35, 519);
             this.checkBoxShowPassword.Name = "checkBoxShowPassword";
-            this.checkBoxShowPassword.Size = new System.Drawing.Size(188, 27);
+            this.checkBoxShowPassword.Size = new System.Drawing.Size(152, 23);
             this.checkBoxShowPassword.TabIndex = 6;
             this.checkBoxShowPassword.Text = "Показать пароль";
             this.checkBoxShowPassword.UseVisualStyleBackColor = true;
@@ -229,7 +229,7 @@
             this.labelAlreadyHaveAnAccount.AutoSize = true;
             this.labelAlreadyHaveAnAccount.Location = new System.Drawing.Point(79, 639);
             this.labelAlreadyHaveAnAccount.Name = "labelAlreadyHaveAnAccount";
-            this.labelAlreadyHaveAnAccount.Size = new System.Drawing.Size(172, 23);
+            this.labelAlreadyHaveAnAccount.Size = new System.Drawing.Size(138, 19);
             this.labelAlreadyHaveAnAccount.TabIndex = 6;
             this.labelAlreadyHaveAnAccount.Text = "Уже есть аккаунт";
             // 
@@ -239,7 +239,7 @@
             this.labelLogIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
             this.labelLogIn.Location = new System.Drawing.Point(120, 662);
             this.labelLogIn.Name = "labelLogIn";
-            this.labelLogIn.Size = new System.Drawing.Size(67, 23);
+            this.labelLogIn.Size = new System.Drawing.Size(54, 19);
             this.labelLogIn.TabIndex = 6;
             this.labelLogIn.Text = "Войти";
             this.labelLogIn.Click += new System.EventHandler(this.labelLogIn_Click);
@@ -250,14 +250,14 @@
             this.labelClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
             this.labelClose.Location = new System.Drawing.Point(112, 698);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(90, 23);
+            this.labelClose.Size = new System.Drawing.Size(72, 19);
             this.labelClose.TabIndex = 6;
             this.labelClose.Text = "Закрыть";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
             // 
             // RegForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(300, 750);
