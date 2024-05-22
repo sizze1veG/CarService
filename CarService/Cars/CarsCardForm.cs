@@ -269,7 +269,7 @@ namespace CarService.Cars
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
-                    MessageBox.Show("Такой запись уже существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Такая запись уже существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
@@ -306,6 +306,10 @@ namespace CarService.Cars
                     MessageBox.Show("Автомобиль удален.", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Запись невозможно удалить из-за связи с другим объектом.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

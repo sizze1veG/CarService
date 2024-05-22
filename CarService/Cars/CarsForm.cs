@@ -108,7 +108,7 @@ namespace CarService.Cars
                     if (clientIdResult != null)
                     {
                         string clientId = clientIdResult.ToString();
-                        clientCardForm = new ClientCardForm(false, false, clientId);
+                        clientCardForm = new ClientCardForm(false, true, clientId);
                         clientCardForm.FormClosed += ClientCardForm_FormClosed;
                         clientCardForm.MdiParent = mainForm;
                         clientCardForm.Dock = DockStyle.Fill;

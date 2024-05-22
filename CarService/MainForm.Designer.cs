@@ -166,6 +166,7 @@
             this.buttonOrders.TabIndex = 3;
             this.buttonOrders.Text = "        Заказы";
             this.buttonOrders.UseVisualStyleBackColor = false;
+            this.buttonOrders.Click += new System.EventHandler(this.buttonOrders_Click);
             // 
             // panelServices
             // 
