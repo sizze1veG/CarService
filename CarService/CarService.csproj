@@ -113,6 +113,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cars\CarsCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cars\CarsCardForm.Designer.cs">
+      <DependentUpon>CarsCardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cars\CarsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cars\CarsForm.Designer.cs">
+      <DependentUpon>CarsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients\ClientCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +161,12 @@
     <Compile Include="MySqlCreate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cars\CarsCardForm.resx">
+      <DependentUpon>CarsCardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cars\CarsForm.resx">
+      <DependentUpon>CarsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clients\ClientCardForm.resx">
       <DependentUpon>ClientCardForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,4 +1,5 @@
-﻿using CarService.Clients;
+﻿using CarService.Cars;
+using CarService.Clients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace CarService
     public partial class MainForm : Form
     {
         ClientsForm clientsForm;
+        CarsForm carsForm;
         public MainForm()
         {
             InitializeComponent();
@@ -140,6 +142,27 @@ namespace CarService
         private void ClientsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             clientsForm = null;
+        }
+
+        private void buttonCars_Click(object sender, EventArgs e)
+        {
+            if (carsForm == null)
+            {
+                carsForm = new CarsForm(this);
+                carsForm.FormClosed += CarsForm_FormClosed;
+                carsForm.MdiParent = this;
+                carsForm.Dock = DockStyle.Fill;
+                carsForm.Show();
+            }
+            else
+            {
+                carsForm.Activate();
+            }
+        }
+
+        private void CarsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            carsForm = null;
         }
     }
 }
