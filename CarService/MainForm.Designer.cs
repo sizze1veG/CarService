@@ -190,6 +190,7 @@
             this.buttonServices.TabIndex = 3;
             this.buttonServices.Text = "        Услуги";
             this.buttonServices.UseVisualStyleBackColor = false;
+            this.buttonServices.Click += new System.EventHandler(this.buttonServices_Click);
             // 
             // panelClients
             // 
