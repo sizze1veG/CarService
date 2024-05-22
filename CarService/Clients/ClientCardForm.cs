@@ -20,6 +20,13 @@ namespace CarService.Clients
         {
             InitializeComponent();
             connection = new DBConnection().GetConnectionString();
+
+            if (isReadOnly)
+            {
+                textBoxFirstName.Enabled = false;
+                textBoxLastName.Enabled = false;
+                textBoxPhone.Enabled = false;
+            }
             if (isNew)
             {
                 buttonAdd.Visible = true;

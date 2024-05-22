@@ -236,6 +236,7 @@
             this.buttonCars.TabIndex = 3;
             this.buttonCars.Text = "        Автомобили";
             this.buttonCars.UseVisualStyleBackColor = false;
+            this.buttonCars.Click += new System.EventHandler(this.buttonCars_Click);
             // 
             // panelReporst
             // 
