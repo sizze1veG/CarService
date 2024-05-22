@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarService.Clients;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,16 +13,25 @@ namespace CarService
 {
     public partial class MainForm : Form
     {
+        ClientsForm clientsForm;
         public MainForm()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
+            nightControlBox1.Visible = false;
+            mdiProp();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            CheckRole();
+            CheckRole();           
         }
 
+        private void mdiProp()
+        {
+            this.SetBevel(false);
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.FromArgb(232, 234, 237);
+        }
         private void CheckRole()
         {
             int roleID = PersonalData.RoleID;
@@ -72,20 +82,36 @@ namespace CarService
         {
             if (sidebarExpand)
             {
-                flowLayoutPanelSideBar.Width -= 10;
+                flowLayoutPanelSideBar.Width -= 50;
                 if (flowLayoutPanelSideBar.Width <= 67)
                 {
                     sidebarExpand = false;
                     timerSideBar.Stop();
+                    panelAboutAProgramm.Width = Width;
+                    panelAccount.Width = Width;
+                    panelCars.Width = Width;
+                    panelClients.Width = Width;
+                    panelEmployees.Width = Width;
+                    panelExit.Width = Width;
+                    panelOrders.Width = Width;
+                    panelServices.Width = Width;
                 }
             }
             else
             {
-                flowLayoutPanelSideBar.Width += 10;
+                flowLayoutPanelSideBar.Width += 50;
                 if (flowLayoutPanelSideBar.Width >= 264)
                 {
                     sidebarExpand = true;
                     timerSideBar.Stop();
+                    panelAboutAProgramm.Width = Width;
+                    panelAccount.Width = Width;
+                    panelCars.Width = Width;
+                    panelClients.Width = Width;
+                    panelEmployees.Width = Width;
+                    panelExit.Width = Width;
+                    panelOrders.Width = Width;
+                    panelServices.Width = Width;
                 }
             }
         }
@@ -93,6 +119,27 @@ namespace CarService
         private void pictureBoxSideBar_Click(object sender, EventArgs e)
         {
             timerSideBar.Start();
+        }
+
+        private void buttonClients_Click(object sender, EventArgs e)
+        {
+            if (clientsForm == null)
+            {
+                clientsForm = new ClientsForm(this);
+                clientsForm.FormClosed += ClientsForm_FormClosed;
+                clientsForm.MdiParent = this;
+                clientsForm.Dock = DockStyle.Fill;
+                clientsForm.Show();
+            }
+            else
+            {
+                clientsForm.Activate();
+            }
+        }
+
+        private void ClientsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            clientsForm = null;
         }
     }
 }

@@ -113,6 +113,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\ClientCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientCardForm.Designer.cs">
+      <DependentUpon>ClientCardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\ClientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientsForm.Designer.cs">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBConnection.cs" />
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
@@ -126,6 +138,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="mdiProperties.cs" />
     <Compile Include="PersonalData.cs" />
     <Compile Include="RegForm.cs">
       <SubType>Form</SubType>
@@ -136,6 +149,12 @@
     <Compile Include="MySqlCreate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Clients\ClientCardForm.resx">
+      <DependentUpon>ClientCardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\ClientsForm.resx">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,5 +188,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

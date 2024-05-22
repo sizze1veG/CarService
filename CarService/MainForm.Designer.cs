@@ -110,7 +110,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(73, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(295, 28);
+            this.label1.Size = new System.Drawing.Size(241, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "Автосервис \"AutoCare Center\"";
             // 
@@ -212,6 +212,7 @@
             this.buttonClients.TabIndex = 3;
             this.buttonClients.Text = "        Клиенты";
             this.buttonClients.UseVisualStyleBackColor = false;
+            this.buttonClients.Click += new System.EventHandler(this.buttonClients_Click);
             // 
             // panelCars
             // 
@@ -354,7 +355,7 @@
             // 
             // timerSideBar
             // 
-            this.timerSideBar.Interval = 30;
+            this.timerSideBar.Interval = 3;
             this.timerSideBar.Tick += new System.EventHandler(this.timerSideBar_Tick);
             // 
             // MainForm
@@ -366,6 +367,7 @@
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
