@@ -1,4 +1,5 @@
-﻿using CarService.Cars;
+﻿using CarService.Account;
+using CarService.Cars;
 using CarService.Clients;
 using CarService.Employees;
 using CarService.Orders;
@@ -22,6 +23,7 @@ namespace CarService
         OrderForm orderForm;
         ServicesForm servicesForm;
         EmployeesForm employeesForm;
+        AccountForm accountForm;
         public MainForm()
         {
             InitializeComponent();
@@ -45,6 +47,10 @@ namespace CarService
             int roleID = PersonalData.RoleID;
             switch (roleID)
             {
+                case 1:
+                    panelAboutAProgramm.Dispose();
+                    panelReporst.Dispose();
+                    break;
                 case 2:
                     panelServices.Dispose();
                     panelReporst.Dispose();
@@ -64,6 +70,7 @@ namespace CarService
                     panelCars.Dispose();
                     panelEmployees.Dispose();
                     panelAboutAProgramm.Dispose();
+                    panelReporst.Dispose();
                     break;
                 default:
                     break;
@@ -232,6 +239,27 @@ namespace CarService
         private void EmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             employeesForm = null;
+        }
+
+        private void buttonAccount_Click(object sender, EventArgs e)
+        {
+            if (accountForm == null)
+            {
+                accountForm = new AccountForm();
+                accountForm.FormClosed += AccountForm_FormClosed;
+                accountForm.MdiParent = this;
+                accountForm.Dock = DockStyle.Fill;
+                accountForm.Show();
+            }
+            else
+            {
+                accountForm.Activate();
+            }
+        }
+
+        private void AccountForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            accountForm = null;
         }
     }
 }
