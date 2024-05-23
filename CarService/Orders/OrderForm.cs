@@ -47,7 +47,7 @@ namespace CarService.Orders
                 adapter.Fill(dataTable);
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    dataGridViewOrders.Rows.Add(row.ItemArray[0], ((DateTime)row.ItemArray[1]).ToShortDateString(), row.ItemArray[2], row.ItemArray[3], row.ItemArray[4]);
+                    dataGridViewOrders.Rows.Add(row.ItemArray[0], ((DateTime)row.ItemArray[1]).ToShortDateString(), row.ItemArray[2], row.ItemArray[3], row.ItemArray[4], "Детали");
                 }
             }
             catch (Exception ex)
@@ -105,7 +105,7 @@ namespace CarService.Orders
                     string orderId = dataGridViewOrders.Rows[e.RowIndex].Cells[0].Value.ToString();
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
-                    string clientIdQuery = "SELECT ClientID FROM Cars WHERE id = @orderId";
+                    string clientIdQuery = "SELECT ClientID FROM Orders WHERE id = @orderId";
                     MySqlCommand clientIdCmd = new MySqlCommand(clientIdQuery, connection);
                     clientIdCmd.Parameters.AddWithValue("@orderId", orderId);
                     object clientIdResult = clientIdCmd.ExecuteScalar();
@@ -138,7 +138,7 @@ namespace CarService.Orders
                     string orderId = dataGridViewOrders.Rows[e.RowIndex].Cells[0].Value.ToString();
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
-                    string carIdQuery = "SELECT ID FROM Cars WHERE id = @orderId";
+                    string carIdQuery = "SELECT CarID FROM Orders WHERE id = @orderId";
                     MySqlCommand carIdCmd = new MySqlCommand(carIdQuery, connection);
                     carIdCmd.Parameters.AddWithValue("@orderId", orderId);
                     object carIdResult = carIdCmd.ExecuteScalar();
@@ -153,6 +153,27 @@ namespace CarService.Orders
                         carsCardForm.Show();
                     }
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+                }
+            }
+            if (e.ColumnIndex == 5 && e.RowIndex >= 0)
+            {
+                try
+                {
+                    string orderId = dataGridViewOrders.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+
+                    OrderDetailsForm detailsForm = new OrderDetailsForm(Convert.ToInt32(orderId));
+                    detailsForm.ShowDialog();
                 }
                 catch (Exception ex)
                 {
@@ -199,7 +220,7 @@ namespace CarService.Orders
                 dataGridViewOrders.Rows.Clear();
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    dataGridViewOrders.Rows.Add(row.ItemArray[0], ((DateTime)row.ItemArray[1]).ToShortDateString(), row.ItemArray[2], row.ItemArray[3], row.ItemArray[4]);
+                    dataGridViewOrders.Rows.Add(row.ItemArray[0], ((DateTime)row.ItemArray[1]).ToShortDateString(), row.ItemArray[2], row.ItemArray[3], row.ItemArray[4], "Детали");
                 }
             }
             catch (Exception ex)
