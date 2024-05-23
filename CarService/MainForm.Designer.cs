@@ -166,6 +166,7 @@
             this.buttonOrders.TabIndex = 3;
             this.buttonOrders.Text = "        Заказы";
             this.buttonOrders.UseVisualStyleBackColor = false;
+            this.buttonOrders.Click += new System.EventHandler(this.buttonOrders_Click);
             // 
             // panelServices
             // 
@@ -189,6 +190,7 @@
             this.buttonServices.TabIndex = 3;
             this.buttonServices.Text = "        Услуги";
             this.buttonServices.UseVisualStyleBackColor = false;
+            this.buttonServices.Click += new System.EventHandler(this.buttonServices_Click);
             // 
             // panelClients
             // 
@@ -212,6 +214,7 @@
             this.buttonClients.TabIndex = 3;
             this.buttonClients.Text = "        Клиенты";
             this.buttonClients.UseVisualStyleBackColor = false;
+            this.buttonClients.Click += new System.EventHandler(this.buttonClients_Click);
             // 
             // panelCars
             // 
@@ -235,6 +238,7 @@
             this.buttonCars.TabIndex = 3;
             this.buttonCars.Text = "        Автомобили";
             this.buttonCars.UseVisualStyleBackColor = false;
+            this.buttonCars.Click += new System.EventHandler(this.buttonCars_Click);
             // 
             // panelReporst
             // 
@@ -281,6 +285,7 @@
             this.buttonEmployees.TabIndex = 3;
             this.buttonEmployees.Text = "        Сотрудники";
             this.buttonEmployees.UseVisualStyleBackColor = false;
+            this.buttonEmployees.Click += new System.EventHandler(this.buttonEmployees_Click);
             // 
             // panelAccount
             // 
@@ -304,6 +309,7 @@
             this.buttonAccount.TabIndex = 3;
             this.buttonAccount.Text = "        Аккаунт";
             this.buttonAccount.UseVisualStyleBackColor = false;
+            this.buttonAccount.Click += new System.EventHandler(this.buttonAccount_Click);
             // 
             // panelAboutAProgramm
             // 
@@ -354,7 +360,7 @@
             // 
             // timerSideBar
             // 
-            this.timerSideBar.Interval = 30;
+            this.timerSideBar.Interval = 3;
             this.timerSideBar.Tick += new System.EventHandler(this.timerSideBar_Tick);
             // 
             // MainForm
@@ -366,6 +372,7 @@
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";

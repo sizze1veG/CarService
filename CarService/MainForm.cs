@@ -1,32 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using CarService.Account;
+using CarService.Cars;
+using CarService.Clients;
+using CarService.Employees;
+using CarService.Orders;
+using CarService.Services;
+using System;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarService
 {
     public partial class MainForm : Form
     {
+        ClientsForm clientsForm;
+        CarsForm carsForm;
+        OrderForm orderForm;
+        ServicesForm servicesForm;
+        EmployeesForm employeesForm;
+        AccountForm accountForm;
         public MainForm()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
+            nightControlBox1.Visible = false;
+            mdiProp();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            CheckRole();
+            CheckRole();           
         }
 
+        private void mdiProp()
+        {
+            this.SetBevel(false);
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.FromArgb(232, 234, 237);
+        }
         private void CheckRole()
         {
             int roleID = PersonalData.RoleID;
             switch (roleID)
             {
+                case 1:
+                    panelAboutAProgramm.Dispose();
+                    panelReporst.Dispose();
+                    break;
                 case 2:
                     panelServices.Dispose();
                     panelReporst.Dispose();
@@ -46,6 +65,7 @@ namespace CarService
                     panelCars.Dispose();
                     panelEmployees.Dispose();
                     panelAboutAProgramm.Dispose();
+                    panelReporst.Dispose();
                     break;
                 default:
                     break;
@@ -72,20 +92,36 @@ namespace CarService
         {
             if (sidebarExpand)
             {
-                flowLayoutPanelSideBar.Width -= 10;
+                flowLayoutPanelSideBar.Width -= 50;
                 if (flowLayoutPanelSideBar.Width <= 67)
                 {
                     sidebarExpand = false;
                     timerSideBar.Stop();
+                    panelAboutAProgramm.Width = Width;
+                    panelAccount.Width = Width;
+                    panelCars.Width = Width;
+                    panelClients.Width = Width;
+                    panelEmployees.Width = Width;
+                    panelExit.Width = Width;
+                    panelOrders.Width = Width;
+                    panelServices.Width = Width;
                 }
             }
             else
             {
-                flowLayoutPanelSideBar.Width += 10;
+                flowLayoutPanelSideBar.Width += 50;
                 if (flowLayoutPanelSideBar.Width >= 264)
                 {
                     sidebarExpand = true;
                     timerSideBar.Stop();
+                    panelAboutAProgramm.Width = Width;
+                    panelAccount.Width = Width;
+                    panelCars.Width = Width;
+                    panelClients.Width = Width;
+                    panelEmployees.Width = Width;
+                    panelExit.Width = Width;
+                    panelOrders.Width = Width;
+                    panelServices.Width = Width;
                 }
             }
         }
@@ -93,6 +129,132 @@ namespace CarService
         private void pictureBoxSideBar_Click(object sender, EventArgs e)
         {
             timerSideBar.Start();
+        }
+
+        private void buttonClients_Click(object sender, EventArgs e)
+        {
+            if (clientsForm == null)
+            {
+                clientsForm = new ClientsForm(this);
+                clientsForm.FormClosed += ClientsForm_FormClosed;
+                clientsForm.MdiParent = this;
+                clientsForm.Dock = DockStyle.Fill;
+                clientsForm.Show();
+            }
+            else
+            {
+                clientsForm.Activate();
+            }
+        }
+
+        private void ClientsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            clientsForm = null;
+        }
+
+        private void buttonCars_Click(object sender, EventArgs e)
+        {
+            if (carsForm == null)
+            {
+                carsForm = new CarsForm(this);
+                carsForm.FormClosed += CarsForm_FormClosed;
+                carsForm.MdiParent = this;
+                carsForm.Dock = DockStyle.Fill;
+                carsForm.Show();
+            }
+            else
+            {
+                carsForm.Activate();
+            }
+        }
+
+        private void CarsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            carsForm = null;
+        }
+
+        private void buttonOrders_Click(object sender, EventArgs e)
+        {
+            if (orderForm == null)
+            {
+                orderForm = new OrderForm(this);
+                orderForm.FormClosed += OrderForm_FormClosed;
+                orderForm.MdiParent = this;
+                orderForm.Dock = DockStyle.Fill;
+                orderForm.Show();
+            }
+            else
+            {
+                orderForm.Activate();
+            }
+        }
+
+        private void OrderForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            orderForm = null;
+        }
+
+        private void buttonServices_Click(object sender, EventArgs e)
+        {
+            if (servicesForm == null)
+            {
+                servicesForm = new ServicesForm(this);
+                servicesForm.FormClosed += ServicesForm_FormClosed;
+                servicesForm.MdiParent = this;
+                servicesForm.Dock = DockStyle.Fill;
+                servicesForm.Show();
+            }
+            else
+            {
+                servicesForm.Activate();
+            }
+        }
+
+        private void ServicesForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            servicesForm = null;
+        }
+
+        private void buttonEmployees_Click(object sender, EventArgs e)
+        {
+            if (employeesForm == null)
+            {
+                employeesForm = new EmployeesForm(this);
+                employeesForm.FormClosed += EmployeesForm_FormClosed;
+                employeesForm.MdiParent = this;
+                employeesForm.Dock = DockStyle.Fill;
+                employeesForm.Show();
+            }
+            else
+            {
+                employeesForm.Activate();
+            }
+        }
+
+        private void EmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            employeesForm = null;
+        }
+
+        private void buttonAccount_Click(object sender, EventArgs e)
+        {
+            if (accountForm == null)
+            {
+                accountForm = new AccountForm();
+                accountForm.FormClosed += AccountForm_FormClosed;
+                accountForm.MdiParent = this;
+                accountForm.Dock = DockStyle.Fill;
+                accountForm.Show();
+            }
+            else
+            {
+                accountForm.Activate();
+            }
+        }
+
+        private void AccountForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            accountForm = null;
         }
     }
 }

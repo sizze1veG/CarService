@@ -1,36 +1,17 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CarService
 {
     public partial class LogInForm : Form
     {
         private MySqlConnection connection;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
         public LogInForm()
         {
             InitializeComponent();
-            //server = "localhost";
-            //database = "carservice";
-            //uid = "locAdmin";
-            //password = "locAdmin";
-
-            //string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};charset=utf8mb4";
-            //connection = new MySqlConnection(connectionString);
-
             connection = new DBConnection().GetConnectionString();
         }
 
