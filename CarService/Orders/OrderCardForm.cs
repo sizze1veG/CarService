@@ -15,6 +15,7 @@ namespace CarService.Orders
     {
         private MySqlConnection connection;
         private int ID = -1;
+        private List<int> originalServiceIds = new List<int>();
         public OrderCardForm(bool isNew, bool isReadOnly, string id = "-1")
         {
             InitializeComponent();
@@ -26,6 +27,15 @@ namespace CarService.Orders
                 comboBoxStatus.Enabled = false;
                 comboBoxCar.Enabled = false;
                 comboBoxClient.Enabled = false;
+
+
+
+                ////////////////////////////////
+                comboBoxServices.Enabled = false;
+                textBoxQuantity.Enabled = false;
+                buttonAddService.Enabled = false;
+                buttonDeleteService.Enabled = false;
+                /////////////////////////////////////
             }
             if (isNew)
             {
@@ -129,6 +139,14 @@ namespace CarService.Orders
                             //}
                         }
                     }
+
+
+
+
+
+                    //////////////////////
+                    LoadOrderDetails();
+                    ///////////////////////
                 }
                 catch (Exception ex)
                 {
@@ -140,6 +158,13 @@ namespace CarService.Orders
                         connection.Close();
                 }
             }
+
+
+
+
+            ////////////////////
+            LoadServices();
+            ///////////////////////
         }
 
         private void SearchClients()
@@ -305,6 +330,13 @@ namespace CarService.Orders
                 comboBoxClient.Focus();
                 return false;
             }
+            if (dataGridViewServices.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавьте услуги.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                connection.Close();
+                comboBoxServices.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -328,6 +360,15 @@ namespace CarService.Orders
 
                     if (result > 0)
                     {
+
+
+
+                        ////////////////////////////
+                        int newOrderId = (int)cmd.LastInsertedId;
+
+                        SaveOrderDetails(newOrderId);
+                        //////////////////////////////////////////
+
                         MessageBox.Show("Заказ добавлен.", "Добавление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Close();
                     }
@@ -358,12 +399,20 @@ namespace CarService.Orders
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
+
+                //////////////////////
+                DeleteOrderDetails(ID);
+                ////////////////////
+
                 string query = "DELETE FROM Orders WHERE id = @Id";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@Id", ID);
                 object result = cmd.ExecuteNonQuery();
                 if (result != null)
                 {
+
+                    
+
                     MessageBox.Show("Заказ удален.", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
@@ -404,6 +453,11 @@ namespace CarService.Orders
 
                     if (result > 0)
                     {
+                        ///////////////////
+                        SaveOrderDetails(ID);
+                        //////////////////////
+
+
                         MessageBox.Show("Заказ обновлен.", "Обновление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Close();
                     }
@@ -421,6 +475,262 @@ namespace CarService.Orders
                     if (connection.State == ConnectionState.Open)
                         connection.Close();
                 }
+            }
+        }
+
+        private void LoadServices()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+
+                string query = "SELECT ServiceName FROM Services";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        comboBoxServices.Items.Add(reader.GetString("ServiceName"));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+        }
+
+        private void LoadOrderDetails()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+
+                string query = @"SELECT OrderDetails.ID, Services.ServiceName, OrderDetails.Quantity, OrderDetails.Price
+                             FROM OrderDetails
+                             INNER JOIN Services ON OrderDetails.ServiceID = Services.ID
+                             WHERE OrderDetails.OrderID = @OrderID";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@OrderID", ID);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ///////////////////////////////
+                        int serviceId = reader.GetInt32("ID");
+                        originalServiceIds.Add(serviceId);
+                        /////////////////////////////////
+
+                        dataGridViewServices.Rows.Add(reader.GetString("ServiceName"), reader.GetInt32("Quantity"), reader.GetDecimal("Price"));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+        }
+
+        private void DeleteOrderDetails(int orderId)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+
+                // Удаление существующих записей OrderDetails для данного заказа
+                string deleteQuery = "DELETE FROM OrderDetails WHERE OrderID = @OrderID";
+                MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, connection);
+                deleteCmd.Parameters.AddWithValue("@OrderID", orderId);
+                deleteCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //finally
+            //{
+            //    if (connection.State == ConnectionState.Open)
+            //        connection.Close();
+            //}
+        }
+
+        private void SaveOrderDetails(int orderId)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+
+
+
+                foreach (int serviceId in originalServiceIds)
+                {
+                    bool isServiceDeleted = true;
+                    foreach (DataGridViewRow row in dataGridViewServices.Rows)
+                    {
+                        if (row.Cells["Service"].Tag != null && (int)row.Cells["Service"].Tag == serviceId)
+                        {
+                            isServiceDeleted = false;
+                            break;
+                        }
+                    }
+
+                    if (isServiceDeleted)
+                    {
+                        string deleteQuery = "DELETE FROM OrderDetails WHERE ID = @ID";
+                        MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, connection);
+                        deleteCmd.Parameters.AddWithValue("@ID", serviceId);
+                        deleteCmd.ExecuteNonQuery();
+                    }
+                }
+
+
+
+
+
+
+                //// Удаление существующих записей OrderDetails для данного заказа
+                //string deleteQuery = "DELETE FROM OrderDetails WHERE OrderID = @OrderID";
+                //MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, connection);
+                //deleteCmd.Parameters.AddWithValue("@OrderID", orderId);
+                //deleteCmd.ExecuteNonQuery();
+
+                // Вставка новых записей OrderDetails
+                string insertQuery = "INSERT INTO OrderDetails (OrderID, ServiceID, Quantity, Price) VALUES (@OrderID, @ServiceID, @Quantity, @Price)";
+                foreach (DataGridViewRow row in dataGridViewServices.Rows)
+                {
+                    int serviceId = GetServiceId(row.Cells["Service"].Value.ToString());
+                    int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                    decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection);
+                    insertCmd.Parameters.AddWithValue("@OrderID", orderId);
+                    insertCmd.Parameters.AddWithValue("@ServiceID", serviceId);
+                    insertCmd.Parameters.AddWithValue("@Quantity", quantity);
+                    insertCmd.Parameters.AddWithValue("@Price", price);
+
+                    insertCmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+        }
+
+        private int GetServiceId(string serviceName)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+
+                string query = "SELECT ID FROM Services WHERE ServiceName = @ServiceName";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@ServiceName", serviceName);
+
+                object result = cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    return Convert.ToInt32(result);
+                }
+                else
+                {
+                    MessageBox.Show("Услуга не найдена.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+            //finally
+            //{
+            //    if (connection.State == ConnectionState.Open)
+            //        connection.Close();
+            //}
+        }
+
+        private void buttonAddService_Click(object sender, EventArgs e)
+        {
+            if (comboBoxServices.SelectedIndex == -1 || string.IsNullOrEmpty(textBoxQuantity.Text) || !int.TryParse(textBoxQuantity.Text, out int quantity) || quantity <= 0)
+            {
+                MessageBox.Show("Выберите услугу и введите корректное количество.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string serviceName = comboBoxServices.SelectedItem.ToString();
+
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+
+                string query = "SELECT Price FROM Services WHERE ServiceName = @ServiceName";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@ServiceName", serviceName);
+                decimal pricePerUnit = Convert.ToDecimal(cmd.ExecuteScalar());
+
+                decimal totalPrice = pricePerUnit * quantity;
+
+                foreach (DataGridViewRow row in dataGridViewServices.Rows)
+                {
+                    if (row.Cells["Service"].Value.ToString() == serviceName)
+                    {
+                        int existingQuantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                        row.Cells["Quantity"].Value = existingQuantity + quantity;
+                        row.Cells["Price"].Value = pricePerUnit * (existingQuantity + quantity);
+                        return;
+                    }
+                }
+
+                dataGridViewServices.Rows.Add(serviceName, quantity, totalPrice);
+
+                comboBoxServices.SelectedIndex = -1;
+                textBoxQuantity.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+        }
+
+        private void buttonDeleteService_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewServices.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите услугу для удаления.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            foreach (DataGridViewRow row in dataGridViewServices.SelectedRows)
+            {
+                dataGridViewServices.Rows.Remove(row);
             }
         }
     }
