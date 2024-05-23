@@ -1,13 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarService.Cars
@@ -77,20 +70,8 @@ namespace CarService.Cars
                             textBoxModel.Text = reader.GetString("Model");
                             textBoxYear.Text = reader.GetInt32("Year").ToString();
                             maskedTextBoxLicensePlate.Text = reader.GetString("LicensePlate");
-
-                            // Заполнение комбобокса с клиентами и установка выбранного клиента
                             string clientName = reader.GetString("ClientName");
-                            //int clientId = reader.GetInt32("ClientID");
-
-                            //if (!comboBoxClient.Items.Contains(clientName))
-                            //{
-                            //comboBoxClient.Items.Add(clientName);
-                            //}
-                            //SearchClients();
                             comboBoxClient.SelectedItem = clientName;
-
-                            // Сохранение ID клиента, если это необходимо для дальнейших операций
-                            //comboBoxClient.Tag = clientId;
                         }
                     }
                 }
@@ -186,7 +167,6 @@ namespace CarService.Cars
                     e.Handled = true;
                 }
             }
-            // Разрешить только цифры для остальных позиций
             else if (maskedTextBoxLicensePlate.SelectionStart == 1 ||
                      maskedTextBoxLicensePlate.SelectionStart == 2 ||
                      maskedTextBoxLicensePlate.SelectionStart == 3 ||
@@ -241,26 +221,18 @@ namespace CarService.Cars
                 {
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
-
-                    // Запрос для добавления новой машины
                     string query = "INSERT INTO Cars (Brand, Model, Year, LicensePlate, ClientID) VALUES (@Brand, @Model, @Year, @LicensePlate, @ClientID)";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                    // Параметры запроса, связывание с текстовыми полями на форме
                     cmd.Parameters.AddWithValue("@Brand", textBoxBrand.Text);
                     cmd.Parameters.AddWithValue("@Model", textBoxModel.Text);
                     cmd.Parameters.AddWithValue("@Year", int.Parse(textBoxYear.Text));
                     cmd.Parameters.AddWithValue("@LicensePlate", maskedTextBoxLicensePlate.Text);
                     cmd.Parameters.AddWithValue("@ClientID", (GetClientId()));
-
-                    // Выполнение запроса
                     int result = cmd.ExecuteNonQuery();
-
-                    // Проверка результата выполнения запроса
                     if (result > 0)
                     {
                         MessageBox.Show("Машина добавлена.", "Добавление", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close(); // Закрытие формы после успешного добавления
+                        Close();
                     }
                     else
                     {
@@ -336,12 +308,12 @@ namespace CarService.Cars
                                     WHERE ID = @ID";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                    cmd.Parameters.AddWithValue("@ID", ID); // carID должен быть идентификатором автомобиля, который нужно обновить
+                    cmd.Parameters.AddWithValue("@ID", ID);
                     cmd.Parameters.AddWithValue("@Brand", textBoxBrand.Text);
                     cmd.Parameters.AddWithValue("@Model", textBoxModel.Text);
                     cmd.Parameters.AddWithValue("@Year", int.Parse(textBoxYear.Text));
                     cmd.Parameters.AddWithValue("@LicensePlate", maskedTextBoxLicensePlate.Text);
-                    cmd.Parameters.AddWithValue("@ClientID", GetClientId()); // предполагается, что comboBoxClient содержит идентификаторы клиентов
+                    cmd.Parameters.AddWithValue("@ClientID", GetClientId()); 
 
                     int result = cmd.ExecuteNonQuery();
 

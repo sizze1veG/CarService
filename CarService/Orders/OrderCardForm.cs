@@ -1,12 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarService.Orders
@@ -27,15 +22,10 @@ namespace CarService.Orders
                 comboBoxStatus.Enabled = false;
                 comboBoxCar.Enabled = false;
                 comboBoxClient.Enabled = false;
-
-
-
-                ////////////////////////////////
                 comboBoxServices.Enabled = false;
                 textBoxQuantity.Enabled = false;
                 buttonAddService.Enabled = false;
                 buttonDeleteService.Enabled = false;
-                /////////////////////////////////////
             }
             if (isNew)
             {
@@ -71,30 +61,6 @@ namespace CarService.Orders
                 {
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
-
-                    //// Заполнение комбобокса с номерами автомобилей
-                    //string queryCars = @"SELECT ID, LicensePlate FROM Cars";
-                    //MySqlCommand commandCars = new MySqlCommand(queryCars, connection);
-                    //using (MySqlDataReader readerCars = commandCars.ExecuteReader())
-                    //{
-                    //    while (readerCars.Read())
-                    //    {
-                    //        comboBoxCar.Items.Add(readerCars.GetString("LicensePlate"));
-                    //    }
-                    //}
-
-                    //// Заполнение комбобокса с именами клиентов
-                    //string queryClients = @"SELECT ID, CONCAT(FirstName, ' ', LastName) AS ClientName FROM Clients";
-                    //MySqlCommand commandClients = new MySqlCommand(queryClients, connection);
-                    //using (MySqlDataReader readerClients = commandClients.ExecuteReader())
-                    //{
-                    //    while (readerClients.Read())
-                    //    {
-                    //        comboBoxClient.Items.Add(new { ID = readerClients.GetInt32("ID"), ClientName = readerClients.GetString("ClientName") });
-                    //    }
-                    //}
-
-                    // Заполнение формы данными заказа
                     string queryOrder = @"SELECT Orders.ID, Orders.OrderDate, Orders.Status, Orders.ClientID, Orders.CarID, 
                         CONCAT(Clients.LastName, ' ', Clients.FirstName) AS ClientName, Cars.LicensePlate 
                         FROM Orders 
@@ -114,39 +80,9 @@ namespace CarService.Orders
                             comboBoxClient.SelectedItem = clientName;
                             string licensePlate = readerOrder.GetString("LicensePlate");
                             comboBoxCar.SelectedItem = licensePlate;
-
-                            //int clientID = readerOrder.GetInt32("ClientID");
-                            //int carID = readerOrder.GetInt32("CarID");
-
-                            //// Выбор нужного клиента в комбобоксе
-                            //foreach (var item in comboBoxClient.Items)
-                            //{
-                            //    if (((dynamic)item).ID == clientID)
-                            //    {
-                            //        comboBoxClient.SelectedItem = item;
-                            //        break;
-                            //    }
-                            //}
-
-                            //// Выбор нужного автомобиля в комбобоксе
-                            //foreach (var item in comboBoxCar.Items)
-                            //{
-                            //    if (((dynamic)item).ID == carID)
-                            //    {
-                            //        comboBoxCar.SelectedItem = item;
-                            //        break;
-                            //    }
-                            //}
                         }
                     }
-
-
-
-
-
-                    //////////////////////
                     LoadOrderDetails();
-                    ///////////////////////
                 }
                 catch (Exception ex)
                 {
@@ -158,13 +94,7 @@ namespace CarService.Orders
                         connection.Close();
                 }
             }
-
-
-
-
-            ////////////////////
             LoadServices();
-            ///////////////////////
         }
 
         private void SearchClients()
@@ -360,15 +290,8 @@ namespace CarService.Orders
 
                     if (result > 0)
                     {
-
-
-
-                        ////////////////////////////
                         int newOrderId = (int)cmd.LastInsertedId;
-
                         SaveOrderDetails(newOrderId);
-                        //////////////////////////////////////////
-
                         MessageBox.Show("Заказ добавлен.", "Добавление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Close();
                     }
@@ -399,20 +322,13 @@ namespace CarService.Orders
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-
-                //////////////////////
                 DeleteOrderDetails(ID);
-                ////////////////////
-
                 string query = "DELETE FROM Orders WHERE id = @Id";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@Id", ID);
                 object result = cmd.ExecuteNonQuery();
                 if (result != null)
                 {
-
-                    
-
                     MessageBox.Show("Заказ удален.", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
@@ -453,11 +369,7 @@ namespace CarService.Orders
 
                     if (result > 0)
                     {
-                        ///////////////////
                         SaveOrderDetails(ID);
-                        //////////////////////
-
-
                         MessageBox.Show("Заказ обновлен.", "Обновление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Close();
                     }
@@ -524,10 +436,8 @@ namespace CarService.Orders
                 {
                     while (reader.Read())
                     {
-                        ///////////////////////////////
                         int serviceId = reader.GetInt32("ID");
                         originalServiceIds.Add(serviceId);
-                        /////////////////////////////////
 
                         dataGridViewServices.Rows.Add(reader.GetString("ServiceName"), reader.GetInt32("Quantity"), reader.GetDecimal("Price"));
                     }
@@ -551,7 +461,6 @@ namespace CarService.Orders
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
 
-                // Удаление существующих записей OrderDetails для данного заказа
                 string deleteQuery = "DELETE FROM OrderDetails WHERE OrderID = @OrderID";
                 MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, connection);
                 deleteCmd.Parameters.AddWithValue("@OrderID", orderId);
@@ -561,11 +470,6 @@ namespace CarService.Orders
             {
                 MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //finally
-            //{
-            //    if (connection.State == ConnectionState.Open)
-            //        connection.Close();
-            //}
         }
 
         private void SaveOrderDetails(int orderId)
@@ -574,8 +478,6 @@ namespace CarService.Orders
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-
-
 
                 foreach (int serviceId in originalServiceIds)
                 {
@@ -597,19 +499,6 @@ namespace CarService.Orders
                         deleteCmd.ExecuteNonQuery();
                     }
                 }
-
-
-
-
-
-
-                //// Удаление существующих записей OrderDetails для данного заказа
-                //string deleteQuery = "DELETE FROM OrderDetails WHERE OrderID = @OrderID";
-                //MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, connection);
-                //deleteCmd.Parameters.AddWithValue("@OrderID", orderId);
-                //deleteCmd.ExecuteNonQuery();
-
-                // Вставка новых записей OrderDetails
                 string insertQuery = "INSERT INTO OrderDetails (OrderID, ServiceID, Quantity, Price) VALUES (@OrderID, @ServiceID, @Quantity, @Price)";
                 foreach (DataGridViewRow row in dataGridViewServices.Rows)
                 {
@@ -664,11 +553,6 @@ namespace CarService.Orders
                 MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
             }
-            //finally
-            //{
-            //    if (connection.State == ConnectionState.Open)
-            //        connection.Close();
-            //}
         }
 
         private void buttonAddService_Click(object sender, EventArgs e)

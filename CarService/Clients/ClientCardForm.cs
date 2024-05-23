@@ -1,13 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarService.Clients
@@ -123,23 +116,19 @@ namespace CarService.Clients
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
 
-                    // Запрос для добавления нового клиента
                     string query = "INSERT INTO Clients (FirstName, LastName, Phone) VALUES (@FirstName, @LastName, @Phone)";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                    // Параметры запроса, связывание с текстовыми полями на форме
                     cmd.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
                     cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
                     cmd.Parameters.AddWithValue("@Phone", textBoxPhone.Text);
 
-                    // Выполнение запроса
                     int result = cmd.ExecuteNonQuery();
 
-                    // Проверка результата выполнения запроса
                     if (result > 0)
                     {
                         MessageBox.Show("Клиент добавлен.", "Добавление", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close(); // Закрытие формы после успешного добавления
+                        Close(); 
                     }
                     else
                     {
