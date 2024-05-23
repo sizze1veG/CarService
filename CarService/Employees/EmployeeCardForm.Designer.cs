@@ -46,6 +46,7 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelConfPassword = new System.Windows.Forms.Label();
             this.textBoxConfPass = new System.Windows.Forms.TextBox();
+            this.checkBoxShowPassword = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +65,7 @@
             this.buttonDelete.TabIndex = 47;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonUpdate
             // 
@@ -79,6 +81,7 @@
             this.buttonUpdate.TabIndex = 46;
             this.buttonUpdate.Text = "Обновить";
             this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonAdd
             // 
@@ -94,6 +97,7 @@
             this.buttonAdd.TabIndex = 45;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // pictureBox1
             // 
@@ -209,6 +213,7 @@
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(484, 45);
             this.textBoxUsername.TabIndex = 38;
+            this.textBoxUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLogin_KeyPress);
             // 
             // labelPassword
             // 
@@ -229,8 +234,10 @@
             this.textBoxPassword.Location = new System.Drawing.Point(1079, 230);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '•';
             this.textBoxPassword.Size = new System.Drawing.Size(484, 45);
             this.textBoxPassword.TabIndex = 38;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
             // 
             // labelConfPassword
             // 
@@ -251,14 +258,30 @@
             this.textBoxConfPass.Location = new System.Drawing.Point(1079, 350);
             this.textBoxConfPass.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxConfPass.Name = "textBoxConfPass";
+            this.textBoxConfPass.PasswordChar = '•';
             this.textBoxConfPass.Size = new System.Drawing.Size(484, 45);
             this.textBoxConfPass.TabIndex = 38;
+            this.textBoxConfPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxConfPassword_KeyPress);
+            // 
+            // checkBoxShowPassword
+            // 
+            this.checkBoxShowPassword.AutoSize = true;
+            this.checkBoxShowPassword.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.checkBoxShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxShowPassword.Location = new System.Drawing.Point(1079, 418);
+            this.checkBoxShowPassword.Name = "checkBoxShowPassword";
+            this.checkBoxShowPassword.Size = new System.Drawing.Size(138, 20);
+            this.checkBoxShowPassword.TabIndex = 49;
+            this.checkBoxShowPassword.Text = "Показать пароль";
+            this.checkBoxShowPassword.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassword.CheckedChanged += new System.EventHandler(this.checkBoxShowPassword_CheckedChanged);
             // 
             // EmployeeCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1638, 773);
+            this.Controls.Add(this.checkBoxShowPassword);
             this.Controls.Add(this.comboBoxPosition);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonUpdate);
@@ -307,5 +330,6 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label labelConfPassword;
         private System.Windows.Forms.TextBox textBoxConfPass;
+        private System.Windows.Forms.CheckBox checkBoxShowPassword;
     }
 }
