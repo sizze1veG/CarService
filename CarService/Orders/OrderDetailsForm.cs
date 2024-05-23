@@ -191,7 +191,6 @@ namespace CarService.Orders
                     PdfWriter.GetInstance(doc, new FileStream(saveFileDialog.FileName, FileMode.Create));
                     doc.Open();
 
-                    // Загрузка шрифта
                     string arialFontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
                     BaseFont baseFont = BaseFont.CreateFont(arialFontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                     var titleFont = new iTextSharp.text.Font(baseFont, 16, iTextSharp.text.Font.BOLD);

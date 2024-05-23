@@ -1,13 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarService.Employees
@@ -239,7 +233,6 @@ namespace CarService.Employees
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
 
-                    // Запрос для добавления новой машины
                     string query = "INSERT INTO employees (FirstName, LastName, Position, Username, Password, RoleID)" +
                         " VALUES (@FirstName, @LastName, @Position, @Username, @Password, @RoleID)";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -250,14 +243,12 @@ namespace CarService.Employees
                     cmd.Parameters.AddWithValue("@Password", HashPassword(textBoxPassword.Text));
                     cmd.Parameters.AddWithValue("@RoleID", comboBoxPosition.SelectedIndex + 2);
 
-                    // Выполнение запроса
                     int result = cmd.ExecuteNonQuery();
 
-                    // Проверка результата выполнения запроса
                     if (result > 0)
                     {
                         MessageBox.Show("Сотрудник добавлен.", "Добавление", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close(); // Закрытие формы после успешного добавления
+                        Close();
                     }
                     else
                     {
@@ -330,7 +321,7 @@ namespace CarService.Employees
                     WHERE ID = @ID";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                    cmd.Parameters.AddWithValue("@ID", ID); // ID должен быть идентификатором сотрудника, который нужно обновить
+                    cmd.Parameters.AddWithValue("@ID", ID);
                     cmd.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
                     cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
                     cmd.Parameters.AddWithValue("@Position", comboBoxPosition.Text);

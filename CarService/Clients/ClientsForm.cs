@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarService.Clients
@@ -50,13 +44,11 @@ namespace CarService.Clients
             {
                 if (connection.State == ConnectionState.Open)
                     connection.Close();
-                //comboBoxSearch.SelectedIndex = -1;
             }
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            //Hide();
             clientCardForm = new ClientCardForm(true, false);
             clientCardForm.FormClosed += ClientCardForm_FormClosed;
             clientCardForm.MdiParent = mainForm;

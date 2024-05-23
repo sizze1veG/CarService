@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarService.Services
@@ -125,23 +119,19 @@ namespace CarService.Services
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
 
-                    // Запрос для добавления нового сервиса
                     string query = "INSERT INTO Services (ServiceName, Description, Price) VALUES (@ServiceName, @Description, @Price)";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                    // Параметры запроса, связывание с текстовыми полями на форме
                     cmd.Parameters.AddWithValue("@ServiceName", textBoxName.Text);
                     cmd.Parameters.AddWithValue("@Description", textBoxDescription.Text);
                     cmd.Parameters.AddWithValue("@Price", decimal.Parse(textBoxPrice.Text));
 
-                    // Выполнение запроса
                     int result = cmd.ExecuteNonQuery();
 
-                    // Проверка результата выполнения запроса
                     if (result > 0)
                     {
                         MessageBox.Show("Услуга добавлена.", "Добавление", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close(); // Закрытие формы после успешного добавления
+                        Close(); 
                     }
                     else
                     {

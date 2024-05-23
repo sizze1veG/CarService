@@ -1,16 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CarService.Account
 {
@@ -218,7 +210,7 @@ namespace CarService.Account
                     string query = @"UPDATE Employees SET Password = @Password WHERE ID = @ID";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                    cmd.Parameters.AddWithValue("@ID", PersonalData.ID); // ID должен быть идентификатором сотрудника, который нужно обновить
+                    cmd.Parameters.AddWithValue("@ID", PersonalData.ID);
                     cmd.Parameters.AddWithValue("@Password", HashPassword(textBoxNewPassword.Text));
 
                     int result = cmd.ExecuteNonQuery();
