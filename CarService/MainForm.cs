@@ -1,5 +1,6 @@
 ﻿using CarService.Cars;
 using CarService.Clients;
+using CarService.Employees;
 using CarService.Orders;
 using CarService.Services;
 using System;
@@ -20,6 +21,7 @@ namespace CarService
         CarsForm carsForm;
         OrderForm orderForm;
         ServicesForm servicesForm;
+        EmployeesForm employeesForm;
         public MainForm()
         {
             InitializeComponent();
@@ -209,6 +211,27 @@ namespace CarService
         private void ServicesForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             servicesForm = null;
+        }
+
+        private void buttonEmployees_Click(object sender, EventArgs e)
+        {
+            if (employeesForm == null)
+            {
+                employeesForm = new EmployeesForm(this);
+                employeesForm.FormClosed += EmployeesForm_FormClosed;
+                employeesForm.MdiParent = this;
+                employeesForm.Dock = DockStyle.Fill;
+                employeesForm.Show();
+            }
+            else
+            {
+                employeesForm.Activate();
+            }
+        }
+
+        private void EmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            employeesForm = null;
         }
     }
 }
