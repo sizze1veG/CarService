@@ -262,6 +262,7 @@
             this.buttonReports.TabIndex = 3;
             this.buttonReports.Text = "        Отчёты";
             this.buttonReports.UseVisualStyleBackColor = false;
+            this.buttonReports.Click += new System.EventHandler(this.buttonReports_Click);
             // 
             // panelEmployees
             // 
