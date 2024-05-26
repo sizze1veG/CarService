@@ -3,6 +3,7 @@ using CarService.Cars;
 using CarService.Clients;
 using CarService.Employees;
 using CarService.Orders;
+using CarService.Reports;
 using CarService.Services;
 using System;
 using System.Drawing;
@@ -19,6 +20,7 @@ namespace CarService
         ServicesForm servicesForm;
         EmployeesForm employeesForm;
         AccountForm accountForm;
+        ReportsForm reportsForm;
         public MainForm()
         {
             InitializeComponent();
@@ -44,7 +46,7 @@ namespace CarService
             {
                 case 1:
                     panelAboutAProgramm.Dispose();
-                    panelReporst.Dispose();
+                    //panelReporst.Dispose();
                     break;
                 case 2:
                     panelServices.Dispose();
@@ -65,7 +67,7 @@ namespace CarService
                     panelCars.Dispose();
                     panelEmployees.Dispose();
                     panelAboutAProgramm.Dispose();
-                    panelReporst.Dispose();
+                    //panelReporst.Dispose();
                     break;
                 default:
                     break;
@@ -255,6 +257,27 @@ namespace CarService
         private void AccountForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             accountForm = null;
+        }
+
+        private void buttonReports_Click(object sender, EventArgs e)
+        {
+            if (reportsForm == null)
+            {
+                reportsForm = new ReportsForm();
+                reportsForm.FormClosed += ReportsForm_FormClosed;
+                reportsForm.MdiParent = this;
+                reportsForm.Dock = DockStyle.Fill;
+                reportsForm.Show();
+            }
+            else
+            {
+                reportsForm.Activate();
+            }
+        }
+
+        private void ReportsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            reportsForm = null;
         }
     }
 }
