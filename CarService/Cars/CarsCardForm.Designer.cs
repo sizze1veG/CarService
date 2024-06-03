@@ -55,9 +55,10 @@
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelete.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(344, 546);
+            this.buttonDelete.Location = new System.Drawing.Point(459, 672);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(225, 52);
+            this.buttonDelete.Size = new System.Drawing.Size(300, 64);
             this.buttonDelete.TabIndex = 36;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = false;
@@ -70,9 +71,10 @@
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpdate.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUpdate.ForeColor = System.Drawing.Color.White;
-            this.buttonUpdate.Location = new System.Drawing.Point(46, 546);
+            this.buttonUpdate.Location = new System.Drawing.Point(61, 672);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(225, 52);
+            this.buttonUpdate.Size = new System.Drawing.Size(300, 64);
             this.buttonUpdate.TabIndex = 35;
             this.buttonUpdate.Text = "Обновить";
             this.buttonUpdate.UseVisualStyleBackColor = false;
@@ -85,9 +87,10 @@
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonAdd.Location = new System.Drawing.Point(46, 546);
+            this.buttonAdd.Location = new System.Drawing.Point(61, 672);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(225, 52);
+            this.buttonAdd.Size = new System.Drawing.Size(300, 64);
             this.buttonAdd.TabIndex = 34;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = false;
@@ -96,9 +99,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(13, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(43, 39);
             this.pictureBox1.TabIndex = 33;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -108,9 +112,10 @@
             this.textBoxModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.textBoxModel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxModel.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxModel.Location = new System.Drawing.Point(417, 187);
+            this.textBoxModel.Location = new System.Drawing.Point(556, 230);
+            this.textBoxModel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxModel.Name = "textBoxModel";
-            this.textBoxModel.Size = new System.Drawing.Size(363, 36);
+            this.textBoxModel.Size = new System.Drawing.Size(484, 45);
             this.textBoxModel.TabIndex = 1;
             // 
             // textBoxBrand
@@ -118,18 +123,20 @@
             this.textBoxBrand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.textBoxBrand.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxBrand.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxBrand.Location = new System.Drawing.Point(417, 98);
+            this.textBoxBrand.Location = new System.Drawing.Point(556, 121);
+            this.textBoxBrand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxBrand.Name = "textBoxBrand";
-            this.textBoxBrand.Size = new System.Drawing.Size(363, 36);
+            this.textBoxBrand.Size = new System.Drawing.Size(484, 45);
             this.textBoxBrand.TabIndex = 0;
             // 
             // labelYear
             // 
             this.labelYear.AutoSize = true;
             this.labelYear.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelYear.Location = new System.Drawing.Point(412, 233);
+            this.labelYear.Location = new System.Drawing.Point(549, 287);
+            this.labelYear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelYear.Name = "labelYear";
-            this.labelYear.Size = new System.Drawing.Size(59, 30);
+            this.labelYear.Size = new System.Drawing.Size(71, 37);
             this.labelYear.TabIndex = 28;
             this.labelYear.Text = "Год";
             // 
@@ -137,9 +144,10 @@
             // 
             this.labelModel.AutoSize = true;
             this.labelModel.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelModel.Location = new System.Drawing.Point(412, 144);
+            this.labelModel.Location = new System.Drawing.Point(549, 177);
+            this.labelModel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelModel.Name = "labelModel";
-            this.labelModel.Size = new System.Drawing.Size(110, 30);
+            this.labelModel.Size = new System.Drawing.Size(132, 37);
             this.labelModel.TabIndex = 29;
             this.labelModel.Text = "Модель";
             // 
@@ -147,18 +155,20 @@
             // 
             this.labelBrand.AutoSize = true;
             this.labelBrand.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBrand.Location = new System.Drawing.Point(412, 55);
+            this.labelBrand.Location = new System.Drawing.Point(549, 68);
+            this.labelBrand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelBrand.Name = "labelBrand";
-            this.labelBrand.Size = new System.Drawing.Size(94, 30);
+            this.labelBrand.Size = new System.Drawing.Size(118, 37);
             this.labelBrand.TabIndex = 30;
             this.labelBrand.Text = "Марка";
             // 
             // pictureBoxClient
             // 
             this.pictureBoxClient.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxClient.Image")));
-            this.pictureBoxClient.Location = new System.Drawing.Point(46, 48);
+            this.pictureBoxClient.Location = new System.Drawing.Point(61, 59);
+            this.pictureBoxClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxClient.Name = "pictureBoxClient";
-            this.pictureBoxClient.Size = new System.Drawing.Size(256, 256);
+            this.pictureBoxClient.Size = new System.Drawing.Size(341, 315);
             this.pictureBoxClient.TabIndex = 27;
             this.pictureBoxClient.TabStop = false;
             // 
@@ -167,10 +177,11 @@
             this.textBoxYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.textBoxYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxYear.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxYear.Location = new System.Drawing.Point(417, 277);
+            this.textBoxYear.Location = new System.Drawing.Point(556, 341);
+            this.textBoxYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxYear.MaxLength = 4;
             this.textBoxYear.Name = "textBoxYear";
-            this.textBoxYear.Size = new System.Drawing.Size(363, 36);
+            this.textBoxYear.Size = new System.Drawing.Size(484, 45);
             this.textBoxYear.TabIndex = 2;
             this.textBoxYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxYear_KeyPress);
             // 
@@ -178,9 +189,10 @@
             // 
             this.labelLicensePlate.AutoSize = true;
             this.labelLicensePlate.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLicensePlate.Location = new System.Drawing.Point(867, 55);
+            this.labelLicensePlate.Location = new System.Drawing.Point(1156, 68);
+            this.labelLicensePlate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLicensePlate.Name = "labelLicensePlate";
-            this.labelLicensePlate.Size = new System.Drawing.Size(96, 30);
+            this.labelLicensePlate.Size = new System.Drawing.Size(120, 37);
             this.labelLicensePlate.TabIndex = 28;
             this.labelLicensePlate.Text = "Номер";
             // 
@@ -191,18 +203,21 @@
             this.comboBoxClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxClient.Font = new System.Drawing.Font("Nirmala UI", 20.25F);
             this.comboBoxClient.FormattingEnabled = true;
-            this.comboBoxClient.Location = new System.Drawing.Point(872, 184);
+            this.comboBoxClient.Location = new System.Drawing.Point(1163, 226);
+            this.comboBoxClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxClient.MaxDropDownItems = 2;
             this.comboBoxClient.Name = "comboBoxClient";
-            this.comboBoxClient.Size = new System.Drawing.Size(363, 45);
+            this.comboBoxClient.Size = new System.Drawing.Size(483, 54);
             this.comboBoxClient.TabIndex = 4;
             // 
             // labelClient
             // 
             this.labelClient.AutoSize = true;
             this.labelClient.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelClient.Location = new System.Drawing.Point(867, 144);
+            this.labelClient.Location = new System.Drawing.Point(1156, 177);
+            this.labelClient.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClient.Name = "labelClient";
-            this.labelClient.Size = new System.Drawing.Size(103, 30);
+            this.labelClient.Size = new System.Drawing.Size(122, 37);
             this.labelClient.TabIndex = 28;
             this.labelClient.Text = "Клиент";
             // 
@@ -211,17 +226,18 @@
             this.maskedTextBoxLicensePlate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.maskedTextBoxLicensePlate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.maskedTextBoxLicensePlate.Font = new System.Drawing.Font("Nirmala UI", 20.25F);
-            this.maskedTextBoxLicensePlate.Location = new System.Drawing.Point(872, 98);
+            this.maskedTextBoxLicensePlate.Location = new System.Drawing.Point(1163, 121);
+            this.maskedTextBoxLicensePlate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maskedTextBoxLicensePlate.Mask = "L000LL00";
             this.maskedTextBoxLicensePlate.Name = "maskedTextBoxLicensePlate";
-            this.maskedTextBoxLicensePlate.Size = new System.Drawing.Size(363, 36);
+            this.maskedTextBoxLicensePlate.Size = new System.Drawing.Size(484, 45);
             this.maskedTextBoxLicensePlate.TabIndex = 3;
             // 
             // CarsCardForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 683);
+            this.ClientSize = new System.Drawing.Size(1677, 841);
             this.Controls.Add(this.maskedTextBoxLicensePlate);
             this.Controls.Add(this.comboBoxClient);
             this.Controls.Add(this.buttonDelete);
@@ -239,6 +255,7 @@
             this.Controls.Add(this.pictureBoxClient);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CarsCardForm";
             this.Text = "CarsCardForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
