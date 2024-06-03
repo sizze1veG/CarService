@@ -15,6 +15,10 @@ namespace CarService.Orders
         {
             InitializeComponent();
             connection = new DBConnection().GetConnectionString();
+            comboBoxStatus.DropDownHeight = 150;
+            comboBoxCar.DropDownHeight = 150;
+            comboBoxClient.DropDownHeight = 150;
+            comboBoxServices.DropDownHeight = 75;
 
             if (isReadOnly)
             {
