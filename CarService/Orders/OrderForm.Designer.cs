@@ -50,7 +50,7 @@
             this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSearch.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSearch.Location = new System.Drawing.Point(16, 15);
-            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSearch.MaxLength = 50;
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(288, 35);
@@ -61,7 +61,7 @@
             // 
             this.pictureBoxUpdate.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxUpdate.Image")));
             this.pictureBoxUpdate.Location = new System.Drawing.Point(1249, 69);
-            this.pictureBoxUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxUpdate.Name = "pictureBoxUpdate";
             this.pictureBoxUpdate.Size = new System.Drawing.Size(32, 30);
             this.pictureBoxUpdate.TabIndex = 31;
@@ -76,7 +76,7 @@
             this.buttonAdd.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.buttonAdd.ForeColor = System.Drawing.Color.White;
             this.buttonAdd.Location = new System.Drawing.Point(1315, 69);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(288, 43);
             this.buttonAdd.TabIndex = 30;
@@ -109,7 +109,7 @@
             this.CarID,
             this.Details});
             this.dataGridViewOrders.Location = new System.Drawing.Point(16, 69);
-            this.dataGridViewOrders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewOrders.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewOrders.MultiSelect = false;
             this.dataGridViewOrders.Name = "dataGridViewOrders";
             this.dataGridViewOrders.ReadOnly = true;
@@ -173,6 +173,7 @@
             this.Details.MinimumWidth = 6;
             this.Details.Name = "Details";
             this.Details.ReadOnly = true;
+            this.Details.Width = 125;
             // 
             // OrderForm
             // 
@@ -185,9 +186,8 @@
             this.Controls.Add(this.dataGridViewOrders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "OrderForm";
-            this.Text = "OrderForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.ResumeLayout(false);
