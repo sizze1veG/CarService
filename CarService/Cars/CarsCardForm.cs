@@ -13,7 +13,7 @@ namespace CarService.Cars
         {
             InitializeComponent();
             connection = new DBConnection().GetConnectionString();
-
+            comboBoxClient.DropDownHeight = 150;
             if (isReadOnly)
             {
                 textBoxBrand.Enabled = false;
